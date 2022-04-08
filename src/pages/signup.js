@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form } from '../components';
 import { FooterContainer } from '../containers/footer';
 import { HeaderContainer } from '../containers/header';
-import * as ROUTES from '../constants/routes'
+import * as ROUTES from '../constants/routes';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function Signup() {
       .createUserWithEmailAndPassword(emailAddress, password)
       .then(res => {
         res.user
-          // method provided by Firebase to add name and profile photo to the user
+          // method provided by Firebase to update profile: add name and profile photo to the user
           .updateProfile({
             displayName: name,
             photoURL: Math.floor(Math.random() * 5 )+ 1
@@ -48,14 +48,14 @@ export default function Signup() {
               placeholder="Name"
               value={name}
               required
-              onChange={({target}) => setName(target.value)}
+              onChange={({ target }) => setName(target.value)}
             />
             <Form.Input
               type="email"
               placeholder="Email address"
               value={emailAddress}
               required
-              onChange={({target}) => setEmailAddress(target.value)}
+              onChange={({ target }) => setEmailAddress(target.value)}
             />
             <Form.Input
               type="password"
@@ -63,7 +63,7 @@ export default function Signup() {
               value={password}
               autocomplete="off"
               required
-              onChange={({target}) => setPassword(target.value)}
+              onChange={({ target }) => setPassword(target.value)}
             />
             <Form.Submit disabled={isInvalid} type="submit">Sign Up</Form.Submit>
           </Form.Base>
@@ -72,7 +72,7 @@ export default function Signup() {
           </Form.Text>
         </Form>
       </HeaderContainer>
-      <FooterContainer></FooterContainer>
+      <FooterContainer />
     </>
   );
 }
